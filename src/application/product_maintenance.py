@@ -24,6 +24,7 @@ class ProductMaintenance:
     def create_product(self, name, gtin, price, sub_category_id):
         new_product = self.__product_factory.default_product_with(name, gtin, price, sub_category_id)
         self.__product_repo.save(new_product)
+        return new_product
 
     def update_product(self, _id, name, gtin, price, sub_category_id):
         product = self.__product_factory.default_product_to_update(_id, name, gtin, price, sub_category_id)

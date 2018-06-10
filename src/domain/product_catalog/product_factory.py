@@ -77,10 +77,11 @@ class ProductFactory:
         if not sub_category:
             raise ProductRequiresSubCategoryException(sub_category_id)
 
-        if not gtin_should_be_unique_validation(self.__product_repo, gtin):
-            raise ProductWithDuplicatedGtinException(gtin)
+        # if not gtin_should_be_unique_validation(self.__product_repo, gtin):
+        #     raise ProductWithDuplicatedGtinException(gtin)
 
         product = Product(name=name, gtin=gtin, price=price, sub_category=sub_category)
+
         guard = ProductGuard()
         if not guard.check(product):
             raise ProductException(guard.get_issues())
